@@ -2,14 +2,24 @@ import cv2 as cv2
 import numpy
 
 import image_processing
+import processing
 import wavelet
 
 if __name__ == '__main__':
-    image_processing.read_database()
+    # Enter query image and  database folder
+    # query_image_filename = input('Enter Query Image :')
+    # folder_database = input('Enter Database Folder :')
 
-    #img = image_processing.read_image()
-    #cim = image_processing.change_color_space(img, 255)
+    folder_database = 'database'
+    query_image_filename = 'image/z.jpg'
 
-    #wavelet.get_features(img)
-    #wc_i, sigma, wc_5 = wavelet.get_wavelet_features(img, 'db1', 4)
+    query_image = image_processing.get_query_image(query_image_filename)
+    database = image_processing.read_database(folder_database)
+
+    results = processing.three_stage_comparison(query_image, database)
+
+    image_processing.show(query_img=query_image, results=results)
+
+
+
 

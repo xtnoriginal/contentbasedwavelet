@@ -4,6 +4,8 @@ import cv2
 import pywt
 import numpy as np
 
+from queue import PriorityQueue
+
 
 def wavelet_deb(img, level):
     return pywt.wavedecn(img, 'db1', level=level, axes=(0, 1))
@@ -29,7 +31,6 @@ def get_wavelet_features(img, wavelet, level):
 
     WCi = _wavedecn(img, wavelet, level)
     sigma_ci = np.std(WCi[0], axis=(0, 1))
-    print(sigma_ci)
     l5_WCi = _wavedecn(img, wavelet, level + 1)
     return WCi[:2].copy(), sigma_ci.copy(), l5_WCi[0].copy()
 
