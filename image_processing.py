@@ -61,7 +61,6 @@ def change_color_space(img, max=255):
 
     return cv2.merge((c1, c2, c3))
 
-
 def save_image(file_name, img):
     cv2.imwrite(file_name, img)
 
